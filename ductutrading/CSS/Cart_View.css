@@ -1,0 +1,40 @@
+.productImage {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.table {
+    text-align: center;
+}
+
+.txtQuantity {
+    max-width: 80px;
+    outline: none;
+    border: 1px solid #ced4da;
+    padding: 0 10px;
+    min-height: 35px;
+    border-radius: 5px;
+}
+
+body {
+    padding: 50px 100px;
+}
+
+.paying {
+    display: flex;
+}
+
+.action {
+    min-width: 70%;
+    display: block;
+    text-align: right;
+}
+
+.total {
+    min-width: 30%;
+    margin: 0;
+}
+
+.title {
+    padding: 0 10px;
+}
