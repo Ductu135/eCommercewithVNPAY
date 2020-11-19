@@ -20,5 +20,9 @@ class Product extends AbstractModel
         return $this->abstractModel->fetchAll();
     }
 
+    public function fetchFilterByCategory($categoryID)
+    {
+        return $this->abstractModel->load($categoryID);
+    }
 
 }

@@ -38,9 +38,8 @@
                         <input class="form-control" id="order_id" name="order_id" type="text" value="<?php echo date("YmdHis") ?>"/>
                     </div>
                     <div class="form-group">
-                        <label for="amount">Money</label>
-                        <input class="form-control" id="amount"
-                               name="amount" type="number" value=""/>
+                        <label for="amount">Money (You can not change the value of this field)</label>
+                        <input class="form-control" id="amount" onclick="check(this.value);" name="amount" type="number" />
                     </div>
                     <div class="form-group">
                         <label for="order_desc">Pay for</label>
@@ -83,7 +82,7 @@
                     </div>
 
 <!--                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Popup</button>-->
-                    <button type="submit" class="btn btn-default">Purchase</button>
+                    <button type="submit" id="btnpay" class="btn btn-default">Purchase</button>
 
                 </form>
             </div>

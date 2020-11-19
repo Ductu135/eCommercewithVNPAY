@@ -61,11 +61,11 @@
                         echo "<tr>".
                                 "<td>" . $arr_cartItems[$i][$row]["ProductID"] . "</td>".
                                 "<td>" . $arr_cartItems[$i][$row]["ProductName"] . "</td>".
-                                "<td>" . $arr_cartItems[$i][$row]["Price"] . "</td>".
+                                "<td>" . number_format($arr_cartItems[$i][$row]["Price"]) . "</td>".
                                 "<td>" . $arr_cartItems[$i][$row]["CategoryName"] . "</td>".
                                 "<td><img class='productImage' src='" . $arr_cartItems[$i][$row]["ProductImage"] . "'></td>".
                                 "<td><input type='number' min='0' id='$id' onclick='updateQuantity(this.id, $price);'  class='txtQuantity'></td>".
-                                "<td><label id='lbcost$id'  class='lbCost'></td>".
+                                "<td><label id='lbcost$id' class='lbCost'></td>".
                                 "<td><button class='btn btn-info' id='$id' onclick='deleteItem(this.id)' name='delete'>Delete</button></td>".
                              "</tr>";
                     }
@@ -78,7 +78,7 @@
     <div class="total">
         <div class="title">
             <label style="font-style: oblique; font-size: 30px">Total:</label>
-            <label style="font-style: oblique; font-size: 20px" id="totalMoney" >0</label>
+            <label style="font-style: oblique; font-size: 20px" id="totalMoney" ></label>
         </div>
     </div>
     <div class="action">
@@ -86,23 +86,21 @@
         <button class="btn btn-info btnPay" id="" >Pay</button>
     </div>
 </div>
-<!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">-->
-<!--    <input type="hidden" name="cmd" value="_s-xclick">-->
-<!--    <input type="hidden" name="hosted_button_id" value="PUEEJ7KL8FEEL">-->
-<!--    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">-->
-<!--    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">-->
-<!--</form>-->
 
 <script>
+
+
+
     $(".btnPay").click(function() {
         var total = $('#totalMoney').text();
-        if(total != "0")
+        var num_total = total.split(",");
+        console.log(num_total);
+        if(num_total.join("") != "0")
         {
-            console.log(total);
-            url = "./vnpay_php/index.php?Total=" + total.toString();
+            url = "./vnpay_php/index.php?Total=" + num_total.join("");
             window.location.href = url;
         }
-        else if (total == "0")
+        else if (num_total.join("") == "0")
         {
             alert("Please pick a number of products");
         }

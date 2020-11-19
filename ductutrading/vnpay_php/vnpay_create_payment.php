@@ -19,7 +19,7 @@ $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 //echo $vnp_TxnRef;
 //echo $vnp_OrderInfo;
 //echo $vnp_OrderType;
-//echo $vnp_Amount;
+//echo $vnp_Amount . "<br>";
 //echo $vnp_Locale;
 //echo $vnp_BankCode;
 //echo $vnp_IpAddr; echo "<br>";
@@ -29,7 +29,7 @@ $vnp_Returnurl = "http://localhost:63342/ductutrading/vnpay_php/vnpay_return.php
 $inputData = array(
     "vnp_Version" => "2.0.0",
     "vnp_TmnCode" => $vnp_TmnCode,
-    "vnp_Amount" => $vnp_Amount,
+    "vnp_Amount" => intval($vnp_Amount),
     "vnp_Command" => "pay",
     "vnp_CreateDate" => date('YmdHis'),
     "vnp_CurrCode" => "VND",

@@ -6,6 +6,7 @@
 .category-side{
     min-height: 100%;
     background-color: aliceblue;
+    position: fixed;
 }
 
 .category-side ul {
@@ -30,7 +31,7 @@ li:hover {
 }
 li a:hover {
     text-decoration: none;
-    color: #d1ecf1;
+    color: #721c24;
 
 }
 
@@ -46,6 +47,7 @@ li a:active {
     line-height: 10em;
     text-decoration: none;
     color: #721c24;
+    margin-left: 80px;
 }
 
 .cartLink:hover {
@@ -76,4 +78,8 @@ table {
 
 .table-element {
     line-height: 2em;
+}
+
+.table-element-ajax {
+    margin: 0 70px;
 }

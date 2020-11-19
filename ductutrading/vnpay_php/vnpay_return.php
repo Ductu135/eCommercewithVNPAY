@@ -62,7 +62,7 @@
                 <div class="form-group">
 
                     <label >Money:</label>
-                    <label><?php echo $_GET['vnp_Amount'] ?></label>
+                    <label><?php echo substr($_GET['vnp_Amount'], 0, -2) ?></label>
                 </div>  
                 <div class="form-group">
                     <label >Pay for:</label>

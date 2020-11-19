@@ -23,7 +23,8 @@ function updateQuantity(id, price)
     var cost = (quantity * price);
     // var total = parseInt(document.getElementById("totalMoney").textContent);
     // var totalMoney = (total + cost);
-    document.getElementById("lbcost"+id).innerText = cost;
+    var format_cost = Number(cost).toLocaleString("en");
+    document.getElementById("lbcost"+id).innerText = format_cost.toString();
 
     // console.log(totalMoney);
     var total = 0;
@@ -33,16 +34,20 @@ function updateQuantity(id, price)
     for(var i = 0; i < arr.length; i++)
     {
         var detailPrice = document.getElementById("lbcost"+arr[i]).textContent;
-        if(detailPrice == "" && detailPrice != 0)
+        var num_detailPrice = detailPrice.split(",");
+        console.log(num_detailPrice.join(""));
+
+        if(num_detailPrice.join("") == "" && num_detailPrice.join("") != 0)
         {
             total += price;
         }
-        else if (detailPrice != "")
+        else if (num_detailPrice.join("") != "")
         {
-            total += parseInt(detailPrice);
+            total += parseInt(num_detailPrice.join(""));
         }
     }
-    document.getElementById("totalMoney").textContent = total;
+    new_total = Number(total).toLocaleString("fn")
+    document.getElementById("totalMoney").textContent = new_total;
 }
 
 function back()
@@ -64,5 +69,15 @@ function back()
     console.log(arr.length);
 }
 
-
+// function turntoNumber (number) {
+//     if(typeof(number) === "string")
+//     {
+//         var arr_number = number.split(',');
+//         console.log(arr_number);
+//         var new_number = arr_number.join("");
+//         console.log(new_number);
+//         //return new_number;
+//     }
+//
+// }
 

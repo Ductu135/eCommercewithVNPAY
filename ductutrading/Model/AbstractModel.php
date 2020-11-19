@@ -35,10 +35,10 @@ class AbstractModel
         return $this->abstractDB->fetchAll($this->tableName, 1);
     }
 
-    public function load($value)
+    public function load($categoryID)
     {
-        $condition = "ProductID = $value";
-        return $this->abstractDB->fetchWCondition($this->tableName, $condition);
+        $condition = "CategoryID = $categoryID";
+        return $this->abstractDB->fetchAll($this->tableName, $condition);
     }
 
 

@@ -34,23 +34,28 @@
                     <?php
                     $category = new Category();
                     $arr_category = $category->fetchAllCategory();
-                        for ($i = 0; $i < count($arr_category); $i++)
-                        {
-                            echo "<li>".
-                                    "<a>" . $arr_category[$i]["CategoryName"] . "</a>"
-                                ."</li>";
-                        }
+                    for ($i = 0; $i < count($arr_category); $i++)
+                    {
+                        $cateID = $arr_category[$i]["CategoryID"];
+                        echo "<li>".
+                                "<a class='submitCategory' id='$cateID' name='$cateID' onclick='filterbyCategory(this.id);'>" . $arr_category[$i]["CategoryName"] . "</a>"
+                            ."</li>";
+                    }
                     ?>
-                    <a class="cartLink" onclick="sendtocart();">VISIT YOUR CART</a>
                 </ul>
+                <a class="cartLink" onclick="sendtocart();">VISIT YOUR CART</a>
             </div>
+
         </div>
         <div class="col-md-9">
             <div class="product-side">
                 <div>
                     <h4>THE PRODUCT LIST</h4>
                 </div>
-                <table>
+                <table class="table-ajax" style="display: none; min-height: 100%;">
+                    <tbody class="ajax-result"></tbody>
+                </table>
+                <table class="table-default">
                     <tbody>
                     <?php
                         $product = new Product();
@@ -61,7 +66,7 @@
                             $id = $arr_product[$i]["ProductID"];
                             $productImage = "<div class='table-element'><img class='productImage' src='". $arr_product[$i]["ProductImage"] . "'></div>";
                             $productName = "<div class='table-element'>". $arr_product[$i]["ProductName"] . "</div>";
-                            $Price = "<div class='table-element'>". $arr_product[$i]["Price"] . "</div>";
+                            $Price = "<div class='table-element'>". number_format($arr_product[$i]["Price"]) . "</div>";
                             $btnAddtocart = "<div class='table-element'><button class='btnAdd' id='$id' onclick='addtocart(this.id);'>Add To Cart</button></div>";
                             if($i == 0 || $i == ($row + 3))
                             {
@@ -89,5 +94,27 @@
             </div>
         </div>
     </div>
+<script>
+        function filterbyCategory(id) {
+            if (id.toString() != "")
+            {
+                $.ajax({
+                    type: "GET",
+                    url: "data_ajax.php",
+                    data: {
+                        "CategoryID": id
+                    },
+                    success: function (msg) {
+                        $('.table-default').css('display','none');
+                        $('.table-ajax').css('display','block');
+                        $('.ajax-result').html(msg);
+                    }
+                });
+            }
+            else {
+
+            }
+        }
+</script>
 </body>
 </html>
