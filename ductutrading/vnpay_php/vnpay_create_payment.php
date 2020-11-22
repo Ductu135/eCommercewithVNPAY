@@ -1,5 +1,4 @@
 <?php
-
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 /**
  * Description of vnpay_ajax
@@ -15,7 +14,7 @@ $vnp_Amount = $_POST['amount'] * 100;
 $vnp_Locale = $_POST['language'];
 $vnp_BankCode = $_POST['bank_code'];
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
-
+$vnp_Email = $_POST['email'];
 //echo $vnp_TxnRef;
 //echo $vnp_OrderInfo;
 //echo $vnp_OrderType;
@@ -38,8 +37,15 @@ $inputData = array(
     "vnp_OrderInfo" => $vnp_OrderInfo,
     "vnp_OrderType" => $vnp_OrderType,
     "vnp_ReturnUrl" => $vnp_Returnurl,
-    "vnp_TxnRef" => $vnp_TxnRef,
+    "vnp_TxnRef" => $vnp_TxnRef
 );
+
+if (isset($_POST['email']))
+{
+    session_start();
+    // Lưu Session
+    $_SESSION['email'] = $_POST['email'];
+}
 
 if (isset($vnp_BankCode) && $vnp_BankCode != "") {
     $inputData['vnp_BankCode'] = $vnp_BankCode;

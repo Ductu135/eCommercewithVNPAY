@@ -19,5 +19,17 @@ function check(value) {
     else {
         document.getElementById("btnpay").style.display = "block";
     }
+}
 
+function validateSending() {
+    var email = document.getElementById("order_email").value;
+    if(email == "")
+    {
+        alert("Please input your email");
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }

@@ -86,6 +86,7 @@
                                           $Price.
                                           $btnAddtocart.
                                       "</td>";
+
                             }
                         }
                     ?>

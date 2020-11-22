@@ -23,7 +23,10 @@
             <h3>Your new invoice</h3>
             <div class="table-responsive">
                 <form action="./vnpay_create_payment.php" id="create_form" method="post">
-
+                    <div class="form-group">
+                        <label>Your email(*)</label>
+                        <input class="form-control" id="order_email" name="email" type="email">
+                    </div>
                     <div class="form-group">
                         <label for="language">Category </label>
                         <select name="order_type" id="order_type" class="form-control">
@@ -82,7 +85,7 @@
                     </div>
 
 <!--                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Popup</button>-->
-                    <button type="submit" id="btnpay" class="btn btn-default">Purchase</button>
+                    <button type="submit" id="btnpay" class="btn btn-default" onclick="return validateSending()">Purchase</button>
 
                 </form>
             </div>

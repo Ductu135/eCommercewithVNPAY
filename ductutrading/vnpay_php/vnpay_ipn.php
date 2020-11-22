@@ -14,6 +14,7 @@ include "./config.php";
 $inputData = array();
 $returnData = array();
 $data = $_REQUEST;
+echo $data;
 foreach ($data as $key => $value) {
     if (substr($key, 0, 4) == "vnp_") {
         $inputData[$key] = $value;
@@ -41,7 +42,8 @@ $vnp_HashSecret = "DTHXNFNBUMNKFKQOZVHTXUXNUQUUXMTV";
 $secureHash = hash('sha256',$vnp_HashSecret . $hashData);
 $Status = 0;
 $orderId = $inputData['vnp_TxnRef'];
-
+$email = $inputData['vnp_Email'];
+//echo $email;
 try {
     //Check Orderid    
     //Kiểm tra checksum của dữ liệu

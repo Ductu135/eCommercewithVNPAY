@@ -86,7 +86,9 @@
         <button class="btn btn-info btnPay" id="" >Pay</button>
     </div>
 </div>
+<div class="information-form">
 
+</div>
 <script>
 
 
